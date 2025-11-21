@@ -34,7 +34,7 @@ function detectLanguage(question) {
   // Hard hints for Romanian
   if (
     q.match(
-      / proiect| proiecte| amenajare| design interior| arhitect| arhitectura| preț| pret| cost| ofert| buget| colaborare| timp| durata| randari| randari 3d| experienta| despre| primesc| pasi| timeframe| ce primesti/
+      /proiect|amenajare|design|arhitect|pret|cost|ofert|buget|colaborare|timp|durata|experienta|primesc|pasi|etape/
     )
   ) {
     return "ro";
@@ -53,32 +53,8 @@ const QA_CLUSTERS = [
     id: "overview",
     type: "normal",
     triggers: {
-      ro: [
-        "despre experienta",
-        "experienta ta",
-        "despre tine",
-        "background",
-        "profil",
-        "cine esti",
-        "arhitect si designer de interior",
-        "ce experienta ai",
-        "spune-mi despre tine",
-        "scurt rezumat",
-        "rezumat"
-      ],
-      en: [
-        "about your experience",
-        "your experience",
-        "about you",
-        "background",
-        "profile",
-        "who are you",
-        "architect and interior designer",
-        "what experience do you have",
-        "tell me about yourself",
-        "quick overview",
-        "overview"
-      ]
+      ro: ["experienta", "despre", "profil", "background", "arhitect", "designer", "rezumat"],
+      en: ["experience", "about", "profile", "background", "architect", "designer", "overview"]
     },
     answers: {
       ro: [
@@ -97,29 +73,8 @@ const QA_CLUSTERS = [
     id: "services",
     type: "normal",
     triggers: {
-      ro: [
-        "cu ce fel de proiecte",
-        "ce tipuri de proiecte",
-        "ce fel de proiecte",
-        "ce servicii oferi",
-        "serviciile tale",
-        "ce faci ca arhitect",
-        "ce faci ca designer",
-        "proiecte de arhitectura",
-        "design interior lucrezi",
-        "de obicei"
-      ],
-      en: [
-        "what kind of projects",
-        "what projects do you work on",
-        "what services do you offer",
-        "your services",
-        "what do you do as an architect",
-        "what do you do as designer",
-        "architecture projects",
-        "interior design",
-        "usually take on"
-      ]
+      ro: ["proiecte", "servicii", "oferi", "faci"],
+      en: ["projects", "services", "offer", "do"]
     },
     answers: {
       ro: [
@@ -138,32 +93,8 @@ const QA_CLUSTERS = [
     id: "process",
     type: "normal",
     triggers: {
-      ro: [
-        "cum decurge",
-        "care sunt pasii",
-        "pasi",
-        "procesul de lucru",
-        "cum lucram",
-        "workflow",
-        "etape proiect",
-        "cum se desfasoara",
-        "tipic",
-        "prima discutie",
-        "pana la final"
-      ],
-      en: [
-        "how does a project work",
-        "what are the steps",
-        "steps",
-        "project process",
-        "how we work",
-        "workflow",
-        "project stages",
-        "how does it unfold",
-        "typical project",
-        "first call",
-        "to handover"
-      ]
+      ro: ["pasi", "paso", "etape", "decurge", "proces", "lucram"],
+      en: ["steps", "stages", "process", "work", "workflow"]
     },
     answers: {
       ro: [
@@ -182,28 +113,8 @@ const QA_CLUSTERS = [
     id: "deliverables",
     type: "normal",
     triggers: {
-      ro: [
-        "ce primesc",
-        "ce primesc de la tine",
-        "livrabile",
-        "ce include",
-        "ce intra in pachet",
-        "ce primesti",
-        "la final ce primesc",
-        "primesc concret",
-        "de la tine la final"
-      ],
-      en: [
-        "what do i receive",
-        "what do i get",
-        "deliverables",
-        "what is included",
-        "what is in the package",
-        "what you receive",
-        "what do i get at the end",
-        "exactly do i receive",
-        "at the end of a project"
-      ]
+      ro: ["primesc", "primesti", "livrabile", "include", "pachet"],
+      en: ["receive", "get", "deliverables", "included", "package"]
     },
     answers: {
       ro: [
@@ -222,33 +133,8 @@ const QA_CLUSTERS = [
     id: "pricing",
     type: "normal",
     triggers: {
-      ro: [
-        "pret",
-        "cat costa",
-        "tarife",
-        "lista de preturi",
-        "oferta",
-        "buget",
-        "cat ar costa",
-        "costul proiectului",
-        "capitolul pret",
-        "lista fixa",
-        "oferta personalizata"
-      ],
-      en: [
-        "price",
-        "pricing",
-        "how much does it cost",
-        "what are your fees",
-        "price list",
-        "quote",
-        "budget",
-        "how much would it cost",
-        "cost of project",
-        "approach pricing",
-        "fixed price",
-        "custom quote"
-      ]
+      ro: ["pret", "costa", "tarif", "buget", "oferta"],
+      en: ["price", "pricing", "cost", "fee", "budget", "quote"]
     },
     answers: {
       ro: [
@@ -267,28 +153,8 @@ const QA_CLUSTERS = [
     id: "timeframe",
     type: "normal",
     triggers: {
-      ro: [
-        "cat dureaza",
-        "durata",
-        "timeframe",
-        "in cat timp",
-        "timp",
-        "termen",
-        "cat timp ia",
-        "pentru un apartament",
-        "dimensiune medie"
-      ],
-      en: [
-        "how long",
-        "duration",
-        "timeframe",
-        "timeline",
-        "how much time",
-        "lead time",
-        "how long does it take",
-        "medium-sized apartment",
-        "roughly how long"
-      ]
+      ro: ["timeframe", "durata", "dureaza", "timp", "termen"],
+      en: ["timeframe", "timeline", "duration", "long", "time"]
     },
     answers: {
       ro: [
@@ -298,102 +164,6 @@ const QA_CLUSTERS = [
       en: [
         "The timeframe depends a lot on the size of the space, the level of detail and how quickly you can respond to feedback. For a medium-sized apartment, concept and drawings can take a few weeks, while actual implementation on site usually stretches over a few months.",
         "In the first conversation Ioana can propose a realistic timeline for your project and explain what depends on the studio and what depends on suppliers, contractors and your own decisions along the way."
-      ]
-    }
-  },
-
-  // 7) First call / how to start
-  {
-    id: "first_call",
-    type: "normal",
-    triggers: {
-      ro: [
-        "cum incepem",
-        "primul pas",
-        "prima discutie",
-        "call initial",
-        "intalnire",
-        "cum pot incepe",
-        "cum sa incep"
-      ],
-      en: [
-        "how do we start",
-        "first step",
-        "first call",
-        "initial call",
-        "initial meeting",
-        "how can i start",
-        "how to start"
-      ]
-    },
-    answers: {
-      ro: [
-        "Primul pas este o discuție scurtă în care povestești despre spațiu, buget, stil și așteptări. Pe baza acesteia, Ioana îți spune dacă proiectul este potrivit pentru ia.design.studio și ce variante de colaborare recomandă.",
-        "Dacă decizi să mergi mai departe, vei primi o ofertă și o structură clară de pași. Abia după ce ești de acord cu ele începe efectiv lucrul pe proiect."
-      ],
-      en: [
-        "The first step is a short call where you describe the space, budget, style and expectations. Based on that, Ioana can tell you if the project is a good fit for ia.design.studio and which collaboration options she recommends.",
-        "If you decide to move forward, you'll receive a quote and a clear structure of steps. Work on the project only starts once you are happy with that framework."
-      ]
-    }
-  },
-
-  // 8) What you offer / what do you provide
-  {
-    id: "what_offer",
-    type: "normal",
-    triggers: {
-      ro: [
-        "ce oferi",
-        "ce poti sa faci",
-        "ce faci",
-        "servicii disponibile"
-      ],
-      en: [
-        "what do you offer",
-        "what can you do",
-        "what do you do",
-        "available services"
-      ]
-    },
-    answers: {
-      ro: [
-        "ia.design.studio oferă servicii complete de arhitectură și design interior: de la consultanță inițială, concept de amenajare, planuri tehnice, selecție de finisaje și mobilier, până la randări 3D și suport în implementare cu echipele de execuție.",
-        "Pachetul se personalizează în funcție de nevoile tale – poți alege doar consultanță sau conceptul, sau să mergi cu proiectul complet până la implementare."
-      ],
-      en: [
-        "ia.design.studio offers complete architecture and interior design services: from initial consultations, interior concept, technical drawings, selection of finishes and furniture, to 3D visualisations and support during implementation with contractors.",
-        "The package is customised to your needs – you can choose just a consultation or concept, or go with the full project through to implementation."
-      ]
-    }
-  },
-
-  // 9) Budget boundaries / unrealistic expectations
-  {
-    id: "budget_boundary",
-    type: "boundary",
-    triggers: {
-      ro: [
-        "foarte ieftin",
-        "aproape zero",
-        "cel mai ieftin",
-        "gratis",
-        "fara buget"
-      ],
-      en: [
-        "very cheap",
-        "almost zero",
-        "as cheap as possible",
-        "for free",
-        "no budget"
-      ]
-    },
-    answers: {
-      ro: [
-        "Un proiect de arhitectură și design interior are întotdeauna nevoie de un buget minim, atât pentru servicii, cât și pentru implementare. Ioana poate adapta propunerile la un buget realist, dar nu poate promite rezultate de calitate cu costuri aproape zero."
-      ],
-      en: [
-        "Architecture and interior design projects always need a minimum budget, both for professional services and for implementation. Ioana can adapt proposals to a realistic budget, but she can't promise high-quality results with almost no costs."
       ]
     }
   }
