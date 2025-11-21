@@ -13,8 +13,8 @@
   --bot-ink: #171717;
   --you-ink: #171717;
 
-  --accent: #b37a4c;      /* clay / wood accent */
-  --accent-soft: rgba(179, 122, 76, 0.08);
+  --accent: #7a8b7d;      /* sage green accent */
+  --accent-soft: rgba(122, 139, 125, 0.08);
 
   --radius: 18px;
 }
@@ -32,8 +32,8 @@
     --bot-ink: #f5f5f5;
     --you-ink: #f5f5f5;
 
-    --accent: #e0a372;
-    --accent-soft: rgba(224, 163, 114, 0.12);
+    --accent: #95a897;      /* lighter sage green for dark mode */
+    --accent-soft: rgba(149, 168, 151, 0.12);
   }
 }
 
@@ -469,9 +469,9 @@ body {
 }
 
 .composer button:hover {
-  background: #945f35;
+  background: #5f6e62;
   transform: translateY(-1px);
-  box-shadow: 0 10px 22px rgba(179, 122, 76, 0.25);
+  box-shadow: 0 10px 22px rgba(122, 139, 125, 0.25);
 }
 
 /* ------ Animations ------ */
