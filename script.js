@@ -34,7 +34,7 @@ function detectLanguage(question) {
   // Hard hints for Romanian
   if (
     q.match(
-      / proiect| proiecte| amenajare| design interior| arhitect| arhitectura| preț| pret| cost| ofert| buget| colaborare| timp| durata| randari| randari 3d/
+      / proiect| proiecte| amenajare| design interior| arhitect| arhitectura| preț| pret| cost| ofert| buget| colaborare| timp| durata| randari| randari 3d| experienta| despre| primesc| pasi| timeframe| ce primesti/
     )
   ) {
     return "ro";
@@ -48,39 +48,45 @@ function detectLanguage(question) {
 // ---------- Q&A BANK (Ioana Ancuța, architect & interior designer) ----------
 
 const QA_CLUSTERS = [
-  // 1) Career overview / profile
+  // 1) Career overview / profile / experience
   {
     id: "overview",
     type: "normal",
     triggers: {
       ro: [
-        "rezumat al experientei",
+        "despre experienta",
         "experienta ta",
-        "despre experienta ta",
         "despre tine",
         "background",
         "profil",
         "cine esti",
-        "arhitect si designer de interior"
+        "arhitect si designer de interior",
+        "ce experienta ai",
+        "spune-mi despre tine",
+        "scurt rezumat",
+        "rezumat"
       ],
       en: [
-        "overview of your experience",
-        "quick overview of your experience",
         "about your experience",
+        "your experience",
         "about you",
         "background",
         "profile",
         "who are you",
-        "architect and interior designer"
+        "architect and interior designer",
+        "what experience do you have",
+        "tell me about yourself",
+        "quick overview",
+        "overview"
       ]
     },
     answers: {
       ro: [
-        "Ioana Ancuța este arhitect și interior designer și lucrează sub studio-ul ei, ia.design.studio. Experiența ei combină partea de concept, funcționalitate și detaliu tehnic, astfel încât spațiul să fie în același timp frumos, coerent și ușor de folosit zi de zi.",
+        "Ioana Ancuță este arhitect și interior designer și lucrează sub studio-ul ei, ia.design.studio. Experiența ei combină partea de concept, funcționalitate și detaliu tehnic, astfel încât spațiul să fie în același timp frumos, coerent și ușor de folosit zi de zi.",
         "De-a lungul timpului a lucrat atât la proiecte de amenajare interioară, cât și la transformări mai complexe, în care a fost nevoie de reorganizare de spațiu, optimizare de flux și coordonare cu furnizori și echipe de execuție."
       ],
       en: [
-        "Ioana Ancuța is an architect and interior designer working under her own studio, ia.design.studio. Her experience combines concept work, functionality and technical detail so that spaces are beautiful, coherent and practical in everyday life.",
+        "Ioana Ancuță is an architect and interior designer working under her own studio, ia.design.studio. Her experience combines concept work, functionality and technical detail so that spaces are beautiful, coherent and practical in everyday life.",
         "Over time she has worked on interior design projects and more complex transformations where space needed to be reorganised, functions clarified and different suppliers and contractors coordinated."
       ]
     }
@@ -92,22 +98,27 @@ const QA_CLUSTERS = [
     type: "normal",
     triggers: {
       ro: [
-        "cu ce fel de proiecte lucrezi",
+        "cu ce fel de proiecte",
         "ce tipuri de proiecte",
-        "ce fel de proiecte iei",
+        "ce fel de proiecte",
         "ce servicii oferi",
         "serviciile tale",
         "ce faci ca arhitect",
-        "ce faci ca designer de interior"
+        "ce faci ca designer",
+        "proiecte de arhitectura",
+        "design interior lucrezi",
+        "de obicei"
       ],
       en: [
-        "what kind of projects do you usually take on",
-        "what kind of projects do you take on",
+        "what kind of projects",
         "what projects do you work on",
         "what services do you offer",
         "your services",
         "what do you do as an architect",
-        "what do you do as an interior designer"
+        "what do you do as designer",
+        "architecture projects",
+        "interior design",
+        "usually take on"
       ]
     },
     answers: {
@@ -122,26 +133,36 @@ const QA_CLUSTERS = [
     }
   },
 
-  // 3) Project process / workflow
+  // 3) Project process / workflow / steps
   {
     id: "process",
     type: "normal",
     triggers: {
       ro: [
-        "cum decurge un proiect",
-        "care sunt pasii unui proiect",
+        "cum decurge",
+        "care sunt pasii",
+        "pasi",
         "procesul de lucru",
-        "cum lucram impreuna",
+        "cum lucram",
         "workflow",
-        "cum se desfasoara proiectul"
+        "etape proiect",
+        "cum se desfasoara",
+        "tipic",
+        "prima discutie",
+        "pana la final"
       ],
       en: [
-        "how does a typical project work",
-        "what are the steps of a project",
+        "how does a project work",
+        "what are the steps",
+        "steps",
         "project process",
-        "how we work together",
+        "how we work",
         "workflow",
-        "how does the project unfold"
+        "project stages",
+        "how does it unfold",
+        "typical project",
+        "first call",
+        "to handover"
       ]
     },
     answers: {
@@ -162,21 +183,26 @@ const QA_CLUSTERS = [
     type: "normal",
     triggers: {
       ro: [
+        "ce primesc",
         "ce primesc de la tine",
-        "ce primesc concret",
         "livrabile",
-        "ce include proiectul",
+        "ce include",
         "ce intra in pachet",
-        "ce primesc la final"
+        "ce primesti",
+        "la final ce primesc",
+        "primesc concret",
+        "de la tine la final"
       ],
       en: [
-        "what do i receive from you",
-        "what do i get from you",
-        "what exactly do i receive",
+        "what do i receive",
+        "what do i get",
         "deliverables",
-        "what is included in the project",
+        "what is included",
         "what is in the package",
-        "what do i get at the end"
+        "what you receive",
+        "what do i get at the end",
+        "exactly do i receive",
+        "at the end of a project"
       ]
     },
     answers: {
@@ -197,24 +223,31 @@ const QA_CLUSTERS = [
     type: "normal",
     triggers: {
       ro: [
-        "cum lucrezi la capitolul pret",
-        "cum stabilesti pretul",
+        "pret",
         "cat costa",
-        "care sunt tarifele",
+        "tarife",
         "lista de preturi",
-        "oferta personalizata",
-        "pret aproximativ",
-        "cat ar costa proiectul"
+        "oferta",
+        "buget",
+        "cat ar costa",
+        "costul proiectului",
+        "capitolul pret",
+        "lista fixa",
+        "oferta personalizata"
       ],
       en: [
-        "how do you approach pricing",
-        "how do you set the price",
+        "price",
+        "pricing",
         "how much does it cost",
         "what are your fees",
         "price list",
-        "custom quote",
-        "rough price",
-        "how much would a project cost"
+        "quote",
+        "budget",
+        "how much would it cost",
+        "cost of project",
+        "approach pricing",
+        "fixed price",
+        "custom quote"
       ]
     },
     answers: {
@@ -223,7 +256,7 @@ const QA_CLUSTERS = [
         "În ofertă vei găsi clar ce este inclus în pachet, cum se structurează plata pe etape și ce opțiuni ai dacă proiectul se extinde sau ai nevoie de servicii suplimentare pe parcurs."
       ],
       en: [
-        "Ioana doesn’t use a single fixed price list for every project because each space has different size, complexity and level of detail. Usually, after understanding your context, she sends a custom quote based on what you actually need.",
+        "Ioana doesn't use a single fixed price list for every project because each space has different size, complexity and level of detail. Usually, after understanding your context, she sends a custom quote based on what you actually need.",
         "The quote explains what is included in the package, how payments are structured by stages and what options you have if the project grows or you need extra services later on."
       ]
     }
@@ -236,21 +269,25 @@ const QA_CLUSTERS = [
     triggers: {
       ro: [
         "cat dureaza",
-        "durata proiectului",
+        "durata",
         "timeframe",
         "in cat timp",
-        "cat timp dureaza",
-        "termen de executie",
-        "termen estimat"
+        "timp",
+        "termen",
+        "cat timp ia",
+        "pentru un apartament",
+        "dimensiune medie"
       ],
       en: [
-        "how long does it take",
-        "project duration",
-        "time frame",
+        "how long",
+        "duration",
+        "timeframe",
         "timeline",
-        "roughly how long",
-        "estimated time",
-        "lead time"
+        "how much time",
+        "lead time",
+        "how long does it take",
+        "medium-sized apartment",
+        "roughly how long"
       ]
     },
     answers: {
@@ -272,19 +309,21 @@ const QA_CLUSTERS = [
     triggers: {
       ro: [
         "cum incepem",
-        "care este primul pas",
+        "primul pas",
         "prima discutie",
         "call initial",
-        "intalnire initiala",
-        "cum pot sa incep un proiect cu tine"
+        "intalnire",
+        "cum pot incepe",
+        "cum sa incep"
       ],
       en: [
         "how do we start",
-        "what is the first step",
+        "first step",
         "first call",
         "initial call",
         "initial meeting",
-        "how can i start a project with you"
+        "how can i start",
+        "how to start"
       ]
     },
     answers: {
@@ -294,26 +333,56 @@ const QA_CLUSTERS = [
       ],
       en: [
         "The first step is a short call where you describe the space, budget, style and expectations. Based on that, Ioana can tell you if the project is a good fit for ia.design.studio and which collaboration options she recommends.",
-        "If you decide to move forward, you’ll receive a quote and a clear structure of steps. Work on the project only starts once you are happy with that framework."
+        "If you decide to move forward, you'll receive a quote and a clear structure of steps. Work on the project only starts once you are happy with that framework."
       ]
     }
   },
 
-  // 8) Budget boundaries / unrealistic expectations
+  // 8) What you offer / what do you provide
+  {
+    id: "what_offer",
+    type: "normal",
+    triggers: {
+      ro: [
+        "ce oferi",
+        "ce poti sa faci",
+        "ce faci",
+        "servicii disponibile"
+      ],
+      en: [
+        "what do you offer",
+        "what can you do",
+        "what do you do",
+        "available services"
+      ]
+    },
+    answers: {
+      ro: [
+        "ia.design.studio oferă servicii complete de arhitectură și design interior: de la consultanță inițială, concept de amenajare, planuri tehnice, selecție de finisaje și mobilier, până la randări 3D și suport în implementare cu echipele de execuție.",
+        "Pachetul se personalizează în funcție de nevoile tale – poți alege doar consultanță sau conceptul, sau să mergi cu proiectul complet până la implementare."
+      ],
+      en: [
+        "ia.design.studio offers complete architecture and interior design services: from initial consultations, interior concept, technical drawings, selection of finishes and furniture, to 3D visualisations and support during implementation with contractors.",
+        "The package is customised to your needs – you can choose just a consultation or concept, or go with the full project through to implementation."
+      ]
+    }
+  },
+
+  // 9) Budget boundaries / unrealistic expectations
   {
     id: "budget_boundary",
     type: "boundary",
     triggers: {
       ro: [
-        "fa-mi ceva foarte ieftin",
-        "buget aproape zero",
-        "cel mai ieftin posibil",
+        "foarte ieftin",
+        "aproape zero",
+        "cel mai ieftin",
         "gratis",
         "fara buget"
       ],
       en: [
-        "do something very cheap",
-        "almost zero budget",
+        "very cheap",
+        "almost zero",
         "as cheap as possible",
         "for free",
         "no budget"
@@ -324,7 +393,7 @@ const QA_CLUSTERS = [
         "Un proiect de arhitectură și design interior are întotdeauna nevoie de un buget minim, atât pentru servicii, cât și pentru implementare. Ioana poate adapta propunerile la un buget realist, dar nu poate promite rezultate de calitate cu costuri aproape zero."
       ],
       en: [
-        "Architecture and interior design projects always need a minimum budget, both for professional services and for implementation. Ioana can adapt proposals to a realistic budget, but she can’t promise high-quality results with almost no costs."
+        "Architecture and interior design projects always need a minimum budget, both for professional services and for implementation. Ioana can adapt proposals to a realistic budget, but she can't promise high-quality results with almost no costs."
       ]
     }
   }
@@ -355,7 +424,7 @@ function findAnswer(question) {
       "Această versiune demo răspunde doar la întrebări legate de experiența Ioanei, serviciile ia.design.studio, preț, pașii unui proiect, ce primești și timeframe. Încearcă să reformulezi întrebarea în zona asta.";
   } else {
     fallback =
-      "This demo only answers questions about Ioana’s experience, ia.design.studio services, pricing, project steps, deliverables and timeframe. Try rephrasing your question in that direction.";
+      "This demo only answers questions about Ioana's experience, ia.design.studio services, pricing, project steps, deliverables and timeframe. Try rephrasing your question in that direction.";
   }
   return { lang, answer: fallback, type: "fallback", id: "fallback" };
 }
@@ -457,10 +526,10 @@ form.addEventListener("submit", (e) => {
 
   if (browser === "ro") {
     greet =
-      "Bună, sunt versiunea interactivă a prezentării Ioanei Ancuța, arhitect și interior designer la ia.design.studio. Poți să mă întrebi în română sau engleză despre experiența ei, cum decurge un proiect, ce primești, prețuri și timeframe.";
+      "Bună, sunt versiunea interactivă a prezentării Ioanei Ancuță, arhitect și interior designer la ia.design.studio. Poți să mă întrebi în română sau engleză despre experiența ei, cum decurge un proiect, ce primești, prețuri și timeframe.";
   } else {
     greet =
-      "Hi, I’m the interactive profile of Ioana Ancuța, architect and interior designer at ia.design.studio. You can ask in Romanian or English about her experience, how a project works, what you receive, pricing and timeframe.";
+      "Hi, I'm the interactive profile of Ioana Ancuța, architect and interior designer at ia.design.studio. You can ask in Romanian or English about her experience, how a project works, what you receive, pricing and timeframe.";
   }
 
   addMessage("Ioana · ia.design.studio", greet, "bot");
