@@ -36,42 +36,6 @@
     --accent-soft: rgba(224, 163, 114, 0.12);
   }
 }
-/* === DARK MODE FIXES FOR VISIBILITY === */
-
-@media (prefers-color-scheme: dark) {
-
-  /* make header clearly visible */
-  .header {
-    background: #111111; /* solid dark instead of faded */
-  }
-
-  .title {
-    color: #f5f5f5 !important; /* bright readable text */
-  }
-
-  .subtitle {
-    color: #cfcfcf !important; /* lighter muted text */
-  }
-
-  /* input field readable in dark mode */
-  .composer input[type="text"] {
-    background: #1b1b1b !important; /* dark background */
-    color: #f5f5f5 !important;        /* white text */
-  }
-
-  .composer input[type="text"]:focus {
-    background: #141414 !important;   /* even darker on focus */
-    color: #ffffff !important;         /* bright text */
-  }
-
-  /* send button contrast in dark mode */
-  .composer button {
-    background: var(--accent);
-    color: #ffffff;
-  }
-}
-
-
 
 /* ------ Base layout ------ */
 * {
@@ -125,6 +89,47 @@ body {
     rgba(255, 255, 255, 0.9),
     rgba(243, 240, 234, 0.9)
   );
+}
+
+/* Dark mode header override */
+@media (prefers-color-scheme: dark) {
+  .header {
+    background: #1a1a1a;
+  }
+
+  .title {
+    color: #f5f5f5;
+  }
+
+  .subtitle {
+    color: #cfcfcf;
+  }
+
+  .mark {
+    background: #1f1f1f;
+    color: #e0e0e0;
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .help-btn {
+    background: rgba(30, 30, 30, 0.9);
+    border-color: rgba(255, 255, 255, 0.08);
+  }
+
+  .composer input[type="text"] {
+    background: #1b1b1b;
+    color: #f5f5f5;
+  }
+
+  .composer input[type="text"]:focus {
+    background: #0f0f0f;
+    color: #ffffff;
+  }
+
+  .composer button {
+    background: var(--accent);
+    color: #ffffff;
+  }
 }
 
 .brand {
@@ -431,8 +436,8 @@ body {
   padding: 11px 14px;
   border-radius: 999px;
   border: 1px solid var(--line);
-  background: var(--panel);      /* was hard-coded light */
-  color: var(--ink);             /* always use ink color */
+  background: var(--panel);
+  color: var(--ink);
   outline: none;
   font-size: 14px;
 }
@@ -444,10 +449,9 @@ body {
 .composer input[type="text"]:focus {
   border-color: var(--accent);
   box-shadow: 0 0 0 1px var(--accent-soft);
-  background: var(--bg);         /* contrast with panel in both modes */
+  background: var(--bg);
   color: var(--ink);
 }
-
 
 .composer button {
   padding: 11px 18px;
